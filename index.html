@@ -789,6 +789,7 @@ footer.site nav{display:flex;flex-wrap:wrap;gap:8px 20px}
   </div>
 </section>
 
+<span id="calculator" aria-hidden="true"></span>
 <section class="block calc-sec" id="income" aria-labelledby="inc-h">
   <div class="wrap">
     <div class="head">
@@ -1110,6 +1111,8 @@ left for you  = rent − payment − management − HST − allowance</code>
   function openM(){last=document.activeElement;clearForms();$('mbody').hidden=false;$('mdone').hidden=true;$('f1').hidden=false;$('f2').hidden=true;$('p2').className='';modal.hidden=false;setTimeout(function(){$('city').focus()},30)}
   function closeM(){modal.hidden=true;clearForms();if(last&&last.focus)last.focus()}
   document.querySelectorAll('[data-open-form]').forEach(function(b){b.addEventListener('click',openM)});
+  function hashForm(){if(location.hash==='#assessment'){openM()}}
+  window.addEventListener('hashchange',hashForm);hashForm();
   $('mclose').addEventListener('click',closeM);$('mok').addEventListener('click',closeM);
   modal.addEventListener('click',function(e){if(e.target===modal)closeM()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closeM()});
